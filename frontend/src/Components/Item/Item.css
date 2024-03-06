@@ -1,0 +1,19 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    min-width: 10rem;
+    max-width: 15rem;
+    margin-bottom: 1rem;
+    transition: ease 0.5s;
+}
+.item:hover {
+    transform: scale(1.1);
+}
+.item-prices {
+    display: flex;
+    gap: 1rem;
+}
+.item-price-old {
+    color: grey;
+    text-decoration: line-through;
+}
