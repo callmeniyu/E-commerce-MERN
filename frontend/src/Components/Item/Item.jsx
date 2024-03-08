@@ -1,8 +1,13 @@
 import React from "react"
 import "./Item.css"
+import { Link, useNavigate } from "react-router-dom"
 const Item = (props) => {
+    const navigate = useNavigate()
+    const handleNavigate = () => {
+        navigate(`/product/${props.id}`)
+    }
     return (
-        <div className="item">
+        <div className="item" onClick={handleNavigate}>
             <img src={props.image} alt="" />
             <p>{props.name}</p>
             <div className="item-prices">

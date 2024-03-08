@@ -22,18 +22,18 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li onClick={() => setMenu("men")}>
-                    <Link to="/mens" style={{ textDecoration: "none", color: "#626262" }}>
-                        Men{location.pathname === "/mens" ? <hr /> : <></>}
+                    <Link to="/men" style={{ textDecoration: "none", color: "#626262" }}>
+                        Men{location.pathname === "/men" ? <hr /> : <></>}
                     </Link>
                 </li>
                 <li onClick={() => setMenu("women")}>
-                    <Link to="womens" style={{ textDecoration: "none", color: "#626262" }}>
-                        Women{location.pathname === "/womens" ? <hr /> : <></>}
+                    <Link to="women" style={{ textDecoration: "none", color: "#626262" }}>
+                        Women{location.pathname === "/women" ? <hr /> : <></>}
                     </Link>
                 </li>
                 <li onClick={() => setMenu("kids")}>
-                    <Link to="kids" style={{ textDecoration: "none", color: "#626262" }}>
-                        Kids{location.pathname === "/kids" ? <hr /> : <></>}
+                    <Link to="kid" style={{ textDecoration: "none", color: "#626262" }}>
+                        Kids{location.pathname === "/kid" ? <hr /> : <></>}
                     </Link>
                 </li>
             </ul>
@@ -63,7 +63,7 @@ const Navbar = () => {
                     </li>
                     <li onClick={() => setMenu("men")}>
                         <Link
-                            to="/mens"
+                            to="/men"
                             style={{ textDecoration: "none", color: "white" }}
                             className={`${menu === "men" ? "nav-item-active" : ""}`}
                         >
@@ -72,7 +72,7 @@ const Navbar = () => {
                     </li>
                     <li onClick={() => setMenu("women")}>
                         <Link
-                            to="womens"
+                            to="women"
                             style={{ textDecoration: "none", color: "white" }}
                             className={`${menu === "women" ? "nav-item-active" : ""}`}
                         >
@@ -81,9 +81,9 @@ const Navbar = () => {
                     </li>
                     <li onClick={() => setMenu("kids")}>
                         <Link
-                            to="kids"
+                            to="kid"
                             style={{ textDecoration: "none", color: "white" }}
-                            className={`${menu === "kids" ? "nav-item-active" : ""}`}
+                            className={`${menu === "kid" ? "nav-item-active" : ""}`}
                         >
                             Kids
                         </Link>

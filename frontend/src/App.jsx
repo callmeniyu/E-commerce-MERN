@@ -8,18 +8,18 @@ import Footer from "./Components/Footer/Footer";
 import women_banner from "./Components/Assets/banner_women.png"
 import kids_banner from "./Components/Assets/banner_kids.png"
 function App() {
-    const [count, setCount] = useState(0)
-
+    const [count, setCount] = useState(0);
+    
     return (
         <>
             <BrowserRouter>
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Shop />} />
-                    <Route path="/mens" element={<ShopCategory category="men" banner={men_banner} />} />
-                    <Route path="/womens" element={<ShopCategory category="women" banner={ women_banner} />} />
-                    <Route path="/kids" element={<ShopCategory category="kid" banner={ kids_banner} />} />
-                    <Route path="/products" element={<Product />}>
+                    <Route path="/men" element={<ShopCategory category="men" banner={men_banner} />} />
+                    <Route path="/women" element={<ShopCategory category="women" banner={ women_banner} />} />
+                    <Route path="/kid" element={<ShopCategory category="kid" banner={ kids_banner} />} />
+                    <Route path="/product" element={<Product />}>
                         <Route path=":productId" element={<Product />} />
                     </Route>
                     <Route path="/cart" element={<Cart />} />
