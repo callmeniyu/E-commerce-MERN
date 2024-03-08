@@ -8,7 +8,7 @@
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 .footer-logo p {
     font-weight: 600;
