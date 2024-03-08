@@ -137,7 +137,7 @@
         color: black !important;
     }
 }
-@media (max-width:280px){
+@media (max-width:390px){
     .nav-login-cart{
         display: none;
     }

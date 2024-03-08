@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar/Navbar"
 import "./App.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import {Shop, ShopCategory, LoginSignup, Product, Cart } from "./Pages/pages";
-import Popular from "./Components/Popular/Popular";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -23,6 +23,7 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/login" element={<LoginSignup />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </>
     )
