@@ -6,6 +6,7 @@
     margin-bottom: 1rem;
     transition: ease 0.5s;
     text-decoration: none;
+    cursor: pointer;
 }
 .item:hover {
     transform: scale(1.1);
