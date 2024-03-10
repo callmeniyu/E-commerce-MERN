@@ -5,6 +5,7 @@ const Item = (props) => {
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(`/product/${props.id}`)
+        window.scrollTo(0,0)
     }
     return (
         <div className="item" onClick={handleNavigate}>
