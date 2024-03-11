@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import "./Navbar.css"
 import logo from "../Assets/logo.png"
 import cart_icon from "../Assets/cart_icon.png"
 import { Link } from "react-router-dom"
+import { ShopContext } from "../../Context/ShopContext"
 const Navbar = () => {
     const [menu, setMenu] = useState("shop")
     const [menuToggler, setMenuToggler] = useState(false)
+    const { getTotalCartItems } = useContext(ShopContext)
     const handleMenuToggle = () => {
         setMenuToggler((prev) => !prev)
     }
@@ -44,7 +46,7 @@ const Navbar = () => {
                 <Link to="/cart" style={{ textDecoration: "none", color: "#626262" }}>
                     <img src={cart_icon} alt="" className="nav-cart-image" />
                 </Link>
-                <div className="nav-cart-count">0</div>
+                <div className="nav-cart-count">{getTotalCartItems()}</div>
             </div>
             <span className="material-symbols-outlined" onClick={handleMenuToggle}>
                 menu
