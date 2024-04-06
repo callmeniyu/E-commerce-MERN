@@ -76,9 +76,14 @@
 }
 .nav-menu-toggle-div {
     display: none;
+    margin-top: 1rem;
+    z-index: 1;
 }
 
 @media (max-width: 830px) {
+    .nav-logo{
+        transform: scale(.8);
+    }
     .nav-menu {
         display: none;
     }
