@@ -1,7 +1,8 @@
 .navbar{
     background: #fff;
     width: 100%;
-    box-shadow: 0 0.5px 5px grey;
+    /* box-shadow: 0 0.5px 5px grey; */
+    border-bottom: 1.9px solid rgb(224, 221, 221);
     padding: 0.1rem 3%;
     display: flex;
     justify-content: space-between;
