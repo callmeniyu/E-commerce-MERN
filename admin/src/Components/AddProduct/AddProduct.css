@@ -31,6 +31,8 @@
 }
 .addproduct-thumbnail-img{
     cursor: pointer;
+    width: 9rem;
+    height: 10rem;
 }
 .addproduct-btn{
     width: 8rem;
@@ -39,6 +41,7 @@
     background-color: rgb(93, 123, 243);
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }
 .addproduct-selector:focus{
     outline: none;
