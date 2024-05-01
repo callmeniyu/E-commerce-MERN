@@ -9,7 +9,6 @@ const Navbar = () => {
     const [menuToggler, setMenuToggler] = useState(false)
     const { getTotalCartAmount } = useContext(ShopContext)
     const {totalCartItems} = getTotalCartAmount();
-    console.log("cart items" + totalCartItems);
 
     const handleMenuToggle = () => {
         setMenuToggler((prev) => !prev)
@@ -44,7 +43,7 @@ const Navbar = () => {
             </ul>
             <div className="nav-login-cart">
                 <Link to="/login" style={{ textDecoration: "none", color: "#626262" }}>
-                    <button>Login</button>
+                    {localStorage.getItem("auth-token") ? <button onClick={(e) => { localStorage.removeItem("auth-token");e.preventDefault(); window.location.replace("/") }}>Logout</button> :<button>Login</button>}
                 </Link>
                 <Link to="/cart" style={{ textDecoration: "none", color: "#626262" }}>
                     <img src={cart_icon} alt="" className="nav-cart-image" />

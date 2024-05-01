@@ -28,6 +28,7 @@
     height: 2.8rem;
     padding: 1rem;
     font-size: clamp(0.79rem, 2vw, 0.9rem);
+    border-color:1px #5c5c5c;
 }
 .loginsignup-container h1{
     font-size: 1.78rem;
@@ -43,6 +44,9 @@
 }
 .loginsignup-container > button:active{
     transform: scale(0.97);
+}
+.loginsignup-container > button:disabled{
+    opacity: .5;
 }
 .loginsignup-login,
 .loginsignup-agree {

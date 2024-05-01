@@ -53,7 +53,7 @@ const AddProduct = () => {
             response.data.success ? alert("Product added") : alert("Product couldn't add")
 
         }
-        window.location.reload();
+        // window.location.reload();
 
     }
     return(
