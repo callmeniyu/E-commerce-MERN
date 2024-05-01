@@ -60,6 +60,28 @@ const Product = mongoose.model("Product", {
     },
 })
 
+// SHEMA FOR USERS
+
+const Users = mongoose.model("Users", {
+    name: {
+        type:String,
+    },
+    email: {
+        type: String,
+        unique:true
+    },
+    password: {
+        type:String,
+    },
+    cartData: {
+        type:Object,
+    },
+    date: {
+        type: Date,
+        default:Date.now()
+    }
+})
+
 // IMAGE STORAGE ENGINE
 
 const storage = multer.diskStorage({
@@ -136,7 +158,8 @@ app.post("/removeproduct", async (req, res) => {
         res.json({
             succes: true,
             name: req.body.name,
-        })
+        });
+        console.log("Product removed")
     } catch (error) {
         console.log(error)
     }

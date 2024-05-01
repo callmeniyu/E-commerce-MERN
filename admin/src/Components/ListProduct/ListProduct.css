@@ -48,8 +48,3 @@
     box-shadow: 1px 1px 5px white; */
 }
 
-@media (max-width:620px){
-    .listproduct-product-image{
-        grid-column: span 6;
-    }
-}

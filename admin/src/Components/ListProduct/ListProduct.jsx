@@ -8,9 +8,24 @@ const ListProduct = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    const response = await axios.get("http://localhost:4000/allproducts")
-    const data = response.data;
-    setAllProducts(data)
+    try {
+      const response = await axios.get("http://localhost:4000/allproducts")
+      const data = response.data;
+      setAllProducts(data);
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  const removeProduct = async (id) => {
+    try {
+      const response = await axios.post("http://localhost:4000/removeproduct", { id: id });
+      fetchInfo();
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   useEffect(() => {
@@ -38,7 +53,7 @@ const ListProduct = () => {
             <p>${product.old_price }</p>
             <p>${product.new_price }</p>
             <p>{product.category }</p>
-            <img src={cross_icon} alt="" className="listproduct-remove-icon" />
+            <img src={cross_icon} onClick={()=>{removeProduct(product.id)}} alt="" className="listproduct-remove-icon" />
           </div>
         })}
       </div>
