@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    padding: 2rem 4%;
+    padding: 3.8rem 5%;
 }
 .loginsignup-fields {
     display: flex;
@@ -25,7 +25,7 @@
     gap: 1.2rem;
 }
 .loginsignup-fields input {
-    height: 2.8rem;
+    height: 3rem;
     padding: 1rem;
     font-size: clamp(0.79rem, 2vw, 0.9rem);
     border-color:1px #5c5c5c;
