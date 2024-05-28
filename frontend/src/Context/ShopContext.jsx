@@ -28,15 +28,44 @@ const ShopContextProvider = (props) => {
         }
     }
 
+    const fetchCartData = async () => {
+        if(localStorage.getItem("auth-token"))
+        try {
+            const response = await axios.post("http://localhost:4000/getcartdata", "", {
+                headers: {
+                    "auth-token":`${localStorage.getItem("auth-token")}`
+                }
+            })
+            const data = response.data
+            setCartItems(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     useEffect(() => {
         fetchData()
+        fetchCartData()
     }, [])
 
-    const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
+    const addToCart = async(itemId) => {
+        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        if (localStorage.getItem("auth-token")) {
+            const response = await axios.post("http://localhost:4000/addtocart", { itemId: itemId }, {
+                headers: {
+                    "auth-token":`${localStorage.getItem("auth-token")}`
+                }
+            });
+        }
     }
-    const removeFromCart = (itemId) => {
+    const removeFromCart = async(itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+        if (localStorage.getItem("auth-token")) {
+            const response = await axios.post("http://localhost:4000/removefromcart", { itemId: itemId }, {
+                headers: {
+                    "auth-token":`${localStorage.getItem("auth-token")}`
+                }
+            });
+        }
     }
 
     const getTotalCartAmount = () => {

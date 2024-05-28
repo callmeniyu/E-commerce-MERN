@@ -161,7 +161,7 @@ app.post("/login", async (req, res) => {
     }
 })
 
-// FETCH ALL PRODUCTS
+// FETCH ALL PRODUCTS ENDPOINT
 
 app.get("/allproducts", async (req, res) => {
     try {
@@ -171,6 +171,22 @@ app.get("/allproducts", async (req, res) => {
     } catch (error) {
         console.log(error)
     }
+})
+
+// NEW COLLECTIONS ENDPOINT
+
+app.get("/newcollections", async (req, res) => {
+    const response = await Product.find({})
+    const new_collections = response.slice(-8).reverse()
+    res.send(new_collections)
+})
+
+// POPULAR IN WOMEN ENDPOINT
+
+app.get("/popularinwomen", async (req, res) => {
+    const response = await Product.find({ category: "women" })
+    const popular_women = response.slice(0, 4)
+    res.send(popular_women)
 })
 
 // PRODUCT ADD ENDPOINT
@@ -207,7 +223,7 @@ app.post("/addproduct", async (req, res) => {
     }
 })
 
-// PRODUCT Remove ENDPOINT
+// PRODUCT REMOVE ENDPOINT
 
 app.post("/removeproduct", async (req, res) => {
     try {
@@ -223,6 +239,49 @@ app.post("/removeproduct", async (req, res) => {
     }
 })
 
+// MIDDLEWARE TO FETCH USER
+const fetchUser = async (req, res, next) => {
+    const token = req.headers["auth-token"]
+
+    if (!token) {
+        res.status(401).send({ error: "please authenticate user" })
+    } else {
+        try {
+            const data = jwt.verify(token, "secret_ecom")
+            req.user = data.user
+            next()
+        } catch (error) {
+            res.status(401).send({ error: "please authenticate user" })
+        }
+    }
+}
+
+// ENDPOINT TO ADD ITEMS TO CART
+app.post("/addtocart", fetchUser, async (req, res) => {
+    const userData = await Users.findOne({ _id: req.user.id })
+    userData.cartData[req.body.itemId] += 1
+    await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
+    res.send("Added to cart")
+});
+
+// ENDPOINT TO REMOVE ITEMS FROM CART
+app.post("/removefromcart", fetchUser, async (req, res) => {
+    const userData = await Users.findOne({ _id: req.user.id })
+    if (userData.cartData[req.body.itemId] > 0)
+        userData.cartData[req.body.itemId] -= 1
+    await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
+    res.send("Removed from cart")
+});
+
+// ENDPOINT TO FETCH CARD DATA
+app.post("/getcartdata", fetchUser, async (req, res) => {
+    const data = await Users.findOne({ _id: req.user.id })
+    const cartData = data.cartData
+    res.json(cartData)
+})
+
 app.listen(port, () => {
     console.log("Server is running on port 4000")
 })
+
+// ADD CART ITEM ENDPOINT
