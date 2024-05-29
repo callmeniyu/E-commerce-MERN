@@ -24,7 +24,11 @@ const ShopContextProvider = (props) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${url}/allproducts`)
+            const response = await axios.get(`${url}/allproducts`, "", {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
             const data = response.data
             setAll_Product(data)
         } catch (error) {
