@@ -13,6 +13,14 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
+app.use(
+    cors({
+        origin: ["https://e-commerce-mern-frontend-sand.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true,
+    })
+)
+
 // CONNECT MONGODB USING ATLAS
 mongoose
     .connect("mongodb+srv://786niyasniya:U3TgS3FpaJQIEt5i@e-commerce.sboujmu.mongodb.net/E-commerce")
@@ -262,16 +270,15 @@ app.post("/addtocart", fetchUser, async (req, res) => {
     userData.cartData[req.body.itemId] += 1
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
     res.send("Added to cart")
-});
+})
 
 // ENDPOINT TO REMOVE ITEMS FROM CART
 app.post("/removefromcart", fetchUser, async (req, res) => {
     const userData = await Users.findOne({ _id: req.user.id })
-    if (userData.cartData[req.body.itemId] > 0)
-        userData.cartData[req.body.itemId] -= 1
+    if (userData.cartData[req.body.itemId] > 0) userData.cartData[req.body.itemId] -= 1
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
     res.send("Removed from cart")
-});
+})
 
 // ENDPOINT TO FETCH CARD DATA
 app.post("/getcartdata", fetchUser, async (req, res) => {

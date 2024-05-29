@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import "./Popular.css"
 import Item from '../Item/Item'
 import axios from "axios"
+
+const localhost = "http://localhost:4000"
+const url = "https://e-commerce-mern-frontend-five.vercel.app"
+
 const Popular = () => {
     const [popular_women, setPopular_Women] = useState([])
     
     useEffect(() => {
         const popularWomen = async() => {
-            const response = await axios.get("http://localhost:4000/popularinwomen")
+            const response = await axios.get(`${url}/popularinwomen`)
             const data = response.data
             setPopular_Women(data)
         }
