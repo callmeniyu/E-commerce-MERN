@@ -26,7 +26,9 @@ const ShopContextProvider = (props) => {
         try {
             const response = await axios.get(`${url}/allproducts`, "", {
                 headers: {
-                    'Access-Control-Allow-Origin': '*'
+                    'Access-Control-Allow-Origin': '*',
+                    Accept:'application/form-data',
+                    'Content-Type': 'application/json'
                 }
             })
             const data = response.data
@@ -41,7 +43,11 @@ const ShopContextProvider = (props) => {
         try {
             const response = await axios.post(`${url}/getcartdata`, "", {
                 headers: {
-                    "auth-token":`${localStorage.getItem("auth-token")}`
+                    Accept:'application/form-data',
+                    "auth-token": `${localStorage.getItem("auth-token")}`,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+
                 }
             })
             const data = response.data
@@ -60,6 +66,9 @@ const ShopContextProvider = (props) => {
         if (localStorage.getItem("auth-token")) {
             const response = await axios.post(`${url}/addtocart`, { itemId: itemId }, {
                 headers: {
+                    Accept:'application/form-data',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
                     "auth-token":`${localStorage.getItem("auth-token")}`
                 }
             });
@@ -70,6 +79,9 @@ const ShopContextProvider = (props) => {
         if (localStorage.getItem("auth-token")) {
             const response = await axios.post(`${url}/removefromcart`, { itemId: itemId }, {
                 headers: {
+                    Accept:'application/form-data',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
                     "auth-token":`${localStorage.getItem("auth-token")}`
                 }
             });
